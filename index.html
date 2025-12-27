@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risklarni baholash - interaktiv ta'lim platformasi</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Risk baholash</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Bosh sahifa</a></li>
+                <li><a href="#butterfly" class="nav-link">Galstuk-Babochka</a></li>
+                <li><a href="#fault-tree" class="nav-link">Nosozliklar daraxti</a></li>
+                <li><a href="#risk-table" class="nav-link">Risk jadvali</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Risklarni baholash usullari</h1>
+                <p class="subtitle">Zamonaviy va interaktiv usullar yordamida xavflarni tahlil qilish va baholash</p>
+                <div class="hero-buttons">
+                    <a href="#butterfly" class="btn btn-primary">Boshlash</a>
+                    <a href="#about" class="btn btn-secondary">Batafsil</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Mavzuni tushuntirish</h2>
+            
+            <div class="info-section">
+                <h3>Risklarni baholash nima?</h3>
+                <p>Risklarni baholash - bu tizim, tashkilot yoki loyihada yuzaga kelishi mumkin bo'lgan xavflarni oldindan aniqlash, tahlil qilish va baholash jarayonidir. Bu usul yordamida potentsial muammolarni oldindan ko'rib chiqib, ularga qarshi choralar ko'rish mumkin.</p>
+                <p>Kiberxavfsizlik sohasida risklarni baholash juda muhim, chunki u tizimlarni himoya qilish va xavflarni minimallashtirish uchun zarur ma'lumotlarni ta'minlaydi.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Galstuk-Babochka tahlil usuli</h3>
+                    <p>Sababdan oqibatgacha xavfli hodisani rivojlanish yo'llarini tahlil qilish va sxematik tavsiflash usuli.</p>
+                    <div class="card-details">
+                        <p><strong>Maqsad:</strong> Tekshirilayotgan hodisaga qarshi choralar va uni keltirib chiqaradigan sabablarga qaratilgan tahlil.</p>
+                        <p><strong>Qachon ishlatiladi:</strong> Xavfli hodisaning sabablarini va oqibatlarini vizual ko'rinishda tahlil qilish kerak bo'lganda.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Nosozliklar daraxti tahlil usuli</h3>
+                    <p>Nomaqbul hodisaga olib keladigan omillarni aniqlash va tahlil qilish usuli.</p>
+                    <div class="card-details">
+                        <p><strong>Maqsad:</strong> Yakuniy hodisaga olib keladigan sabablarni topish va mantiqiy bog'liqlikni tahlil qilish.</p>
+                        <p><strong>Qachon ishlatiladi:</strong> Mantiqiy bog'liqliklar va ehtimolliklarni hisoblash kerak bo'lganda.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Risk jadvali</h3>
+                    <p>Tahdidlar, oqibatlar va ehtimolliklarni tahlil qilish va ranjirlash.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Butterfly Diagram Section -->
+    <section id="butterfly" class="section">
+        <div class="container">
+            <h2 class="section-title">Galstuk-Babochka tahlil usuli</h2>
+            <div class="info-box">
+                <p><strong>Maqsad:</strong> Tekshirilayotgan hodisaga qarshi choralar va uni keltirib chiqaradigan sabablarga qaratilgan tahlil.</p>
+            </div>
+            
+            <div class="butterfly-controls">
+                <button class="btn btn-primary" id="add-cause">
+                    <i class="fas fa-plus"></i> Sabab qo'shish
+                </button>
+                <button class="btn btn-primary" id="add-consequence">
+                    <i class="fas fa-plus"></i> Oqibat qo'shish
+                </button>
+                <button class="btn btn-secondary" id="clear-butterfly">
+                    <i class="fas fa-trash"></i> Tozalash
+                </button>
+                <button class="btn btn-info" id="save-butterfly">
+                    <i class="fas fa-save"></i> Saqlash
+                </button>
+            </div>
+
+            <div class="butterfly-container">
+                <div class="butterfly-diagram" id="butterfly-diagram">
+                    <div class="central-event" id="central-event">
+                        <div class="event-content">
+                            <input type="text" id="event-input" placeholder="Markaziy hodisani kiriting..." value="Xavfli hodisa">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </div>
+                    </div>
+                    <div class="causes-section" id="causes-section">
+                        <h3>Sabablar</h3>
+                        <div class="causes-list" id="causes-list"></div>
+                    </div>
+                    <div class="consequences-section" id="consequences-section">
+                        <h3>Oqibatlar</h3>
+                        <div class="consequences-list" id="consequences-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-book"></i> Qo'llanma:</h3>
+                <ol>
+                    <li><strong>Markaziy hodisani kiriting</strong> - Oq rangli markaziy qutiga bosing va hodisa nomini kiriting (masalan: "Kiberhujum", "Ma'lumotlar o'g'irlanishi")</li>
+                    <li><strong>Sabablar qo'shing</strong> - "Sabab qo'shish" tugmasini bosib, hodisaga olib keladigan sabablarni qo'shing. Har bir sabab alohida element sifatida ko'rinadi.</li>
+                    <li><strong>Oqibatlar qo'shing</strong> - "Oqibat qo'shish" tugmasini bosib, hodisadan kelib chiqadigan oqibatlarni qo'shing.</li>
+                    <li><strong>Tahrirlash/O'chirish</strong> - Har bir elementda ✏️ (tahrirlash) va ❌ (o'chirish) tugmalari bor. Ulardan foydalaning.</li>
+                    <li><strong>Saqlash</strong> - "Saqlash" tugmasini bosing (ma'lumotlar avtomatik ham saqlanadi).</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h4><i class="fas fa-lightbulb"></i> Misol:</h4>
+                    <p><strong>Markaziy hodisa:</strong> "Ma'lumotlar o'g'irlanishi"</p>
+                    <p><strong>Sabablar:</strong> "Zaif parol", "Antivirus yo'q", "Xodimlar tayyorgarlikdan o'tmagan"</p>
+                    <p><strong>Oqibatlar:</strong> "Moliyaviy yo'qotish", "Reputatsiya zarari", "Qonuniy muammolar"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fault Tree Section -->
+    <section id="fault-tree" class="section">
+        <div class="container">
+            <h2 class="section-title">Nosozliklar daraxti tahlil usuli</h2>
+            <div class="info-box">
+                <p><strong>Maqsad:</strong> Yakuniy hodisaga olib keladigan sabablarni topish va mantiqiy bog'liqlikni tahlil qilish.</p>
+            </div>
+
+            <div class="fault-tree-controls">
+                <button class="btn btn-primary" id="add-gate">
+                    <i class="fas fa-plus"></i> Mantiqiy element qo'shish
+                </button>
+                <button class="btn btn-primary" id="add-event">
+                    <i class="fas fa-plus"></i> Voqea qo'shish
+                </button>
+                <button class="btn btn-secondary" id="clear-tree">
+                    <i class="fas fa-trash"></i> Tozalash
+                </button>
+                <button class="btn btn-info" id="calculate-probability">
+                    <i class="fas fa-calculator"></i> Ehtimollikni hisoblash
+                </button>
+            </div>
+
+            <div class="fault-tree-container">
+                <div class="tree-canvas" id="tree-canvas">
+                    <div class="tree-root" id="tree-root">
+                        <div class="tree-node top-event" id="top-event-node">
+                            <input type="text" class="node-input" id="top-event-input" placeholder="Yakuniy hodisa..." value="Yakuniy hodisa" onblur="saveTopEvent()">
+                            <div class="node-controls">
+                                <button class="btn-icon" onclick="editTopEvent()" title="Tahrirlash">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="probability-panel" id="probability-panel" style="display: none;">
+                <h3>Ehtimollik hisob-kitoblari</h3>
+                <div id="probability-results"></div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-book"></i> Qo'llanma:</h3>
+                <ol>
+                    <li><strong>Yakuniy hodisani kiriting</strong> - Yuqoridagi qizil qutiga bosing va yakuniy hodisa nomini kiriting (masalan: "Tizim ishlamay qolishi")</li>
+                    <li><strong>Mantiqiy element qo'shing</strong> - "Mantiqiy element qo'shish" tugmasini bosib, <strong>AND</strong> yoki <strong>OR</strong> kiriting:
+                        <ul>
+                            <li><strong>AND</strong> - Barcha shartlar bajarilishi kerak (ehtimolliklar ko'paytiriladi)</li>
+                            <li><strong>OR</strong> - Har qanday shart bajarilishi kifoya (ehtimolliklar qo'shiladi)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Voqea qo'shing</strong> - "Voqea qo'shish" tugmasini bosib, dastlabki voqealarni qo'shing (masalan: "Server nosozligi", "Quvvat uzilishi")</li>
+                    <li><strong>Ehtimollik kiriting</strong> - Har bir voqeaga <strong>0 dan 1 gacha</strong> ehtimollik kiriting:
+                        <ul>
+                            <li>0.1 = 10% ehtimollik (past)</li>
+                            <li>0.5 = 50% ehtimollik (o'rta)</li>
+                            <li>0.9 = 90% ehtimollik (yuqori)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Hisoblash</strong> - "Ehtimollikni hisoblash" tugmasini bosing va natijalarni ko'ring</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h4><i class="fas fa-lightbulb"></i> Misol:</h4>
+                    <p><strong>Yakuniy hodisa:</strong> "Tizim ishlamay qolishi"</p>
+                    <p><strong>Mantiqiy element:</strong> AND</p>
+                    <p><strong>Voqealar:</strong></p>
+                    <ul>
+                        <li>"Server nosozligi" - Ehtimollik: 0.2 (20%)</li>
+                        <li>"Quvvat uzilishi" - Ehtimollik: 0.1 (10%)</li>
+                    </ul>
+                    <p><strong>Natija:</strong> 0.2 × 0.1 = 0.02 (2% ehtimollik)</p>
+                    <p><em>AND uchun: ehtimolliklar ko'paytiriladi</em></p>
+                </div>
+
+                <div class="formula-box">
+                    <h4><i class="fas fa-calculator"></i> Hisoblash formulalari:</h4>
+                    <p><strong>AND gate:</strong> P(A AND B) = P(A) × P(B)</p>
+                    <p><strong>OR gate:</strong> P(A OR B) = 1 - [(1-P(A)) × (1-P(B))]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Table Section -->
+    <section id="risk-table" class="section">
+        <div class="container">
+            <h2 class="section-title">Risk jadvali dashboard</h2>
+            <div class="info-box">
+                <p><strong>Maqsad:</strong> Tahdidlarni oqibatlar, ehtimollik va risk o'lchovi bo'yicha tahlil qilish va ranjirlash.</p>
+            </div>
+
+            <div class="risk-controls">
+                <button class="btn btn-primary" id="add-risk">
+                    <i class="fas fa-plus"></i> Yangi tahdid qo'shish
+                </button>
+                <button class="btn btn-secondary" id="export-table">
+                    <i class="fas fa-download"></i> Eksport qilish
+                </button>
+                <button class="btn btn-info" id="sort-risks">
+                    <i class="fas fa-sort"></i> Saralash
+                </button>
+                <button class="btn btn-secondary" id="clear-risks" style="background: #e74c3c; color: white;">
+                    <i class="fas fa-trash"></i> Barchasini tozalash
+                </button>
+            </div>
+
+            <div class="risk-table-container">
+                <table class="risk-table" id="risk-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Tahdidlar</th>
+                            <th>Oqibatlari <span class="tooltip" data-tooltip="1-5 shkala">ℹ️</span></th>
+                            <th>Ehtimollik <span class="tooltip" data-tooltip="1-5 shkala">ℹ️</span></th>
+                            <th>Risk o'lchovi</th>
+                            <th>Ranjirlash</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="risk-table-body">
+                        <!-- Dynamic rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="risk-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-risks">0</div>
+                    <div class="stat-label">Jami tahdidlar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="high-risks">0</div>
+                    <div class="stat-label">Yuqori risk</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-risk">0</div>
+                    <div class="stat-label">O'rtacha risk</div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-book"></i> Qo'llanma:</h3>
+                <ol>
+                    <li><strong>Yangi tahdid qo'shing</strong> - "Yangi tahdid qo'shish" tugmasini bosing va modal oynada ma'lumotlarni kiriting:
+                        <ul>
+                            <li><strong>Tahdid nomi:</strong> Tahdidning nomini kiriting (masalan: "Virus tushishi")</li>
+                            <li><strong>Oqibatlari (1-5):</strong> Agar tahdid yuzaga kelsa, qanday oqibatlar bo'lishi mumkin?
+                                <ul>
+                                    <li>1 = Juda past oqibat</li>
+                                    <li>2 = Past oqibat</li>
+                                    <li>3 = O'rta oqibat</li>
+                                    <li>4 = Yuqori oqibat</li>
+                                    <li>5 = Juda yuqori oqibat</li>
+                                </ul>
+                            </li>
+                            <li><strong>Ehtimollik (1-5):</strong> Tahdidning yuzaga kelish ehtimolligi qanday?
+                                <ul>
+                                    <li>1 = Juda kam ehtimollik</li>
+                                    <li>2 = Kam ehtimollik</li>
+                                    <li>3 = O'rta ehtimollik</li>
+                                    <li>4 = Yuqori ehtimollik</li>
+                                    <li>5 = Juda yuqori ehtimollik</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Risk o'lchovi</strong> - Avtomatik hisoblanadi: <strong>Oqibat × Ehtimollik</strong></li>
+                    <li><strong>Ranjirlash</strong> - Avtomatik saralanadi: Risk o'lchovi yuqori bo'lgan tahdidlar yuqoriroq ranjirlanadi</li>
+                    <li><strong>Tahrirlash/O'chirish</strong> - Jadvaldagi ✏️ va 🗑️ tugmalaridan foydalaning</li>
+                    <li><strong>Eksport qilish</strong> - "Eksport qilish" tugmasini bosib, CSV fayl yuklab oling</li>
+                    <li><strong>Saralash</strong> - "Saralash" tugmasini bosib, tahdidlarni risk o'lchovi bo'yicha saralang</li>
+                </ol>
+
+                <div class="example-box">
+                    <h4><i class="fas fa-lightbulb"></i> Misol:</h4>
+                    <table class="example-table">
+                        <thead>
+                            <tr>
+                                <th>Tahdid</th>
+                                <th>Oqibat</th>
+                                <th>Ehtimollik</th>
+                                <th>Risk o'lchovi</th>
+                                <th>Rang</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Texnik nosozlik</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>10</td>
+                                <td><span class="risk-badge risk-medium">O'rta</span></td>
+                            </tr>
+                            <tr>
+                                <td>Virus tushishi</td>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>16</td>
+                                <td><span class="risk-badge risk-high">Yuqori</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="formula-box">
+                    <h4><i class="fas fa-info-circle"></i> Risk Darajalari:</h4>
+                    <ul>
+                        <li><span class="risk-badge risk-low">Yashil</span> - Past risk (0-9) - Minimal e'tibor kerak</li>
+                        <li><span class="risk-badge risk-medium">Sariq</span> - O'rta risk (10-14) - Nazorat qilish kerak</li>
+                        <li><span class="risk-badge risk-high">Qizil</span> - Yuqori risk (15+) - Darhol chora ko'rish kerak</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for adding/editing risks -->
+    <div class="modal" id="risk-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Yangi tahdid qo'shish</h3>
+                <button class="modal-close" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="risk-form">
+                    <div class="form-group">
+                        <label for="threat-name">Tahdid nomi:</label>
+                        <input type="text" id="threat-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="consequence">Oqibatlari (1-5):</label>
+                        <input type="number" id="consequence" class="form-control" min="1" max="5" value="3" required>
+                        <div class="range-display" id="consequence-display">3</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="probability">Ehtimollik (1-5):</label>
+                        <input type="number" id="probability" class="form-control" min="1" max="5" value="3" required>
+                        <div class="range-display" id="probability-display">3</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="risk-measure">Risk o'lchovi:</label>
+                        <input type="number" id="risk-measure" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="ranking">Ranjirlash:</label>
+                        <input type="number" id="ranking" class="form-control" readonly>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-form">Bekor qilish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Risklarni Baholash - Interaktiv Ta'lim Platformasi</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/butterfly.js"></script>
+    <script src="js/fault-tree.js"></script>
+    <script src="js/risk-table.js"></script>
+</body>
+</html>
+
